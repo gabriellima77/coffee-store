@@ -4,63 +4,39 @@
   box-sizing: border-box;
 }
 
-.header {
-  position: relative;
+header {
   width: 100%;
   height: 70px;
   background-color: rgba(0, 0, 0, .5);
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   color: white;
 }
 
-.header.active {
-  height: 100%;
+#logo {
+  margin-left: 10%;
+  letter-spacing: 4px;
 }
 
-nav {
+.nav-links {
+  position: relative;
+  justify-self: flex-end;
   display: flex;
   align-items: center;
   justify-content: space-around;
   width: 20%;
+  margin-left: 30%;
 }
 
-nav li {
+.nav-links li {
   padding: 3px;
   list-style: none;
   cursor: pointer;
 }
 
-nav .active {
+.nav-links .active {
   border-bottom: 1px solid black;
-}
-
-.burger {
-  display: none;
-  cursor: pointer;
-  flex-direction: column;
-  justify-content: space-around;
-  position: absolute;
-  right: 10%;
-  width: 50px;
-  height: 50px;
-  border: 1px solid red;
-}
-
-.burger::after, .burger::before {
-  content: '';
-  position: relative;
-  height: 13%;
-  width: 100%;
-  background-color: white;
-}
-
-.middle {
-  position: relative;
-  height: 13%;
-  width: 100%;
-  background-color: white;
 }
 
 main {
@@ -75,4 +51,56 @@ footer {
   width: 100%;
   height: 40px;
   color: white;
+}
+
+
+/* estilos do botão do menu para dispositivos móveis */
+@media (max-width: 768px) {
+
+  header {
+    justify-content: left;
+  }
+
+  #logo {
+    margin-left: 10%;
+  }
+
+  .nav-links.active {
+    position: absolute;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    height: calc(100vh - 70px);
+    top: 70px;
+    background-color: rgb(127, 127, 127);
+    margin: 0;
+  }
+
+  .burger {
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-around;
+    position: absolute;
+    right: 10%;
+    width: 40px;
+    height: 40px;
+    border: 1px solid red;
+  }
+  
+  .burger::after, .burger::before {
+    content: '';
+    position: relative;
+    height: 13%;
+    width: 100%;
+    background-color: white;
+  }
+  
+  .middle {
+    position: relative;
+    height: 13%;
+    width: 100%;
+    background-color: white;
+  }
+  
 }
