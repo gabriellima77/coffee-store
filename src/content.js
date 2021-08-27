@@ -8,12 +8,12 @@ export default class Content {
     tagsList.forEach(tag=> tagsContainer.removeChild(tag));
   }
 
-  putTags = (coffeeList)=> {
+  putTags = ()=> {
     this.removeTags();
     const tagsContainer = document.querySelector('.tags');
     let allTags = [];
     // Pega todos os ingredientes, com várias repetições;
-    coffeeList.forEach((coffee)=> {
+    this.coffeeList.forEach((coffee)=> {
       if(coffee.ingredients){
         const ingredients = [...coffee.ingredients];
         allTags = [...allTags, ...ingredients];
@@ -26,7 +26,7 @@ export default class Content {
       divTag.classList.add('tag');
       divTag.textContent = tag;
       divTag.title = tag;
-      divTag.addEventListener('click', ()=> this.filterCoffees(coffeeList, tag, 'tag'));
+      divTag.addEventListener('click', ()=> this.filterCoffees(tag, 'tag'));
       tagsContainer.appendChild(divTag);
     })
   }
@@ -55,8 +55,8 @@ export default class Content {
     if(type !== 'hot' && type !== 'iced') return -1;
     this.removeCoffees();
     const coffeeList = await this.getData(type);
-    console.log(coffeeList);
-    this.putTags(coffeeList);
+    this.coffeeList = coffeeList;
+    this.putTags();
     this.putCoffees(coffeeList);
   }
 
@@ -77,20 +77,24 @@ export default class Content {
     Filtra a lista de cafés baseados no tipo de evento
     Eventos: Tag e pesquisa
   */
-  filterCoffees(coffeeList, text, type) {
+  filterCoffees(text, type) {
     let filteredList;
     if(type === 'tag') {
-      filteredList = coffeeList.filter(coffee=> (coffee.ingredients)
+      filteredList = this.coffeeList.filter(coffee=> (coffee.ingredients)
         ?coffee.ingredients.includes(text): null
       );
     } else {
-      filteredList = coffeeList.filter(coffee=> {
+      filteredList = this.coffeeList.filter(coffee=> {
+        console.log(text);
         const upperCaseInput = text.toUpperCase();
-        if(coffee.title.toUpperCase().contains(upperCaseInput)){
-          return coffee;
+        if(coffee.title){
+          const upperCaseTitle = coffee.title.toUpperCase();
+          return (upperCaseTitle.includes(upperCaseInput))
+            ? coffee: null;
         }
       });
     }
+    console.log(filteredList);
     this.removeCoffees();
     this.putCoffees(filteredList);
   }
