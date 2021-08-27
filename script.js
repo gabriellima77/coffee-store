@@ -8,8 +8,13 @@ window.onload = ()=> {
     content.putCoffeesByType('hot');
     searchBar.addEventListener('keyup', (e)=> content.filterCoffees(e.target.value, 'search'));
     links.forEach(link =>{
-      const type = (link.textContent === 'Quente')? 'hot': 'iced';
-      link.addEventListener('click', ()=> content.putCoffeesByType(type));
+      const type = link.textContent.toLowerCase();
+      link.addEventListener('click', ()=> {
+        const hasActive = document.querySelector('nav .active');
+        if(hasActive) hasActive.classList.remove('active');
+        link.classList.add('active');
+        content.putCoffeesByType(type);
+      });
     });
   }
 

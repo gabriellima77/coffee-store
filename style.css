@@ -10,62 +10,6 @@ body {
   flex-direction: column;
 }
 
-header {
-  width: 100%;
-  height: 70px;
-  background-color: #222831;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  color: white;
-}
-
-#logo {
-  text-decoration: none;
-  color: white;
-  margin-left: 10%;
-  letter-spacing: 4px;
-}
-
-.search {
-  border: none;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
-  margin: 0 auto;
-  width: 30%;
-  height: 30px;
-  color: white;
-}
-
-.search::placeholder {
-  color: rgb(187, 187, 187);
-  padding-left: 2%;
-}
-
-.nav-links {
-  position: relative;
-  justify-self: flex-end;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  width: 20%;
-  margin-right: 5%;
-}
-
-.nav-links li {
-  padding: 3px;
-  list-style: none;
-  cursor: pointer;
-}
-
-.nav-links li:hover {
-  border-bottom: 1px solid blue;
-}
-
-.nav-links .active {
-  border-bottom: 1px solid black;
-}
-
 .tags {
   box-sizing: border-box;
   border-top: 1px solid rgb(168, 168, 168);
@@ -84,7 +28,7 @@ header {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  border-radius: 10px;
+  border-radius: 9px;
   cursor: pointer;
   padding: 0 8px;
   display: grid;
@@ -93,8 +37,7 @@ header {
   margin-right: 5px;
   height: 25px;
   width: 100px;
-
-  background-color: white;
+  background-color: #EEEEEE;
 }
 
 main {
@@ -119,83 +62,4 @@ footer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   row-gap: 20px;
-}
-
-.card {
-  cursor: pointer;
-  background-color: #393e46;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  width: 20vw;
-  height: 40vh;
-}
-
-.title {
-  color: white;
-  margin: 10px 0;
-}
-
-.cardImg {
-  height: 40%;
-}
-
-.ingredients {
-  color: white;
-  width: 80%;
-  height: 20%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* estilos do botão do menu para dispositivos móveis */
-@media (max-width: 768px) {
-  header {
-    justify-content: left;
-  }
-
-  #logo {
-    margin-left: 10%;
-  }
-
-  .nav-links.active {
-    position: absolute;
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 100%;
-    height: calc(100vh - 70px);
-    top: 70px;
-    background-color: #222831;
-    margin: 0;
-  }
-
-  .burger {
-    display: flex;
-    cursor: pointer;
-    flex-direction: column;
-    justify-content: space-around;
-    position: absolute;
-    right: 10%;
-    width: 40px;
-    height: 40px;
-    border: 1px solid red;
-  }
-
-  .burger::after,
-  .burger::before {
-    content: '';
-    position: relative;
-    height: 13%;
-    width: 100%;
-    background-color: white;
-  }
-
-  .middle {
-    position: relative;
-    height: 13%;
-    width: 100%;
-    background-color: white;
-  }
 }

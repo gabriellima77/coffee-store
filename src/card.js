@@ -22,7 +22,8 @@ export default class Card {
     
 
     title.textContent = this._title;
-    ingredients.textContent = 'Ingredientes: ' + this._ingredients;
+    const start = (this._ingredients.length > 1)? 'Ingredients: ': 'Ingredient: '
+    ingredients.textContent = start + this._ingredients.join(', ') + '.';
 
     img.alt = 'Coffee';
     img.src = this.imgSrc;

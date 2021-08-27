@@ -45,14 +45,24 @@ export default class Content {
   */
   getCards = (coffeeList)=> {
     const cards = [];
-    coffeeList.forEach((coffee)=>
-      (coffee.title)? cards.push(new Card(coffee).getCard): null 
+    coffeeList.forEach((coffee)=>{
+      if(coffee.title){
+        const newCard = new Card(coffee).getCard;
+        newCard.addEventListener('click', ()=> this.showDetails(coffee));
+        cards.push(newCard);
+      }
+    }
     );
     return cards;
   }
 
   putCoffeesByType = async(type) => {
     if(type !== 'hot' && type !== 'iced') return -1;
+    const panel = document.querySelector('.panel');
+    if(panel){
+      panel.parentElement.removeChild(panel);
+      this.removeContainerStyles();
+    }
     this.removeCoffees();
     const coffeeList = await this.getData(type);
     this.coffeeList = coffeeList;
@@ -70,7 +80,6 @@ export default class Content {
   removeCoffees() {
     const container = document.querySelector('.container');
     const cards = [...document.querySelectorAll('.card')];
-    console.log(cards);
     cards.forEach(card => container.removeChild(card));
   }
   /* 
@@ -78,6 +87,11 @@ export default class Content {
     Eventos: Tag e pesquisa
   */
   filterCoffees(text, type) {
+    const panel = document.querySelector('.panel');
+    if(panel){
+      panel.parentElement.removeChild(panel);
+      this.removeContainerStyles();
+    }
     let filteredList;
     if(type === 'tag') {
       filteredList = this.coffeeList.filter(coffee=> (coffee.ingredients)
@@ -85,7 +99,6 @@ export default class Content {
       );
     } else {
       filteredList = this.coffeeList.filter(coffee=> {
-        console.log(text);
         const upperCaseInput = text.toUpperCase();
         if(coffee.title){
           const upperCaseTitle = coffee.title.toUpperCase();
@@ -94,9 +107,54 @@ export default class Content {
         }
       });
     }
-    console.log(filteredList);
     this.removeCoffees();
     this.putCoffees(filteredList);
   }
 
+  showDetails = ({title, description, ingredients})=> {
+    const container = document.querySelector('.container');
+    this.removeCoffees();
+    container.style.gridTemplateColumns = 'none';
+    container.style.placeItems = 'center';
+    const panel = document.createElement('div');
+    const returnBtn = document.createElement('button');
+    const h3 = document.createElement('h3');
+    const img = document.createElement('img');
+    const desc = document.createElement('p');
+    const ingr = document.createElement('p');
+
+    panel.classList.add('panel');
+    returnBtn.classList.add('return');
+    h3.classList.add('title');
+    img.classList.add('panelImg');
+    desc.classList.add('description');
+    ingr.classList.add('ingredients');
+
+    h3.textContent = title;
+    desc.textContent = description;
+    const startText = (ingredients.length > 1)?'The ingredients are ': 'The ingredient is ';
+    ingr.textContent =  startText + ingredients.join(', ') + '.';
+    
+    img.src = '../assets/coffee-cup.png';
+
+    returnBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+    returnBtn.addEventListener('click', ()=>{
+      panel.parentElement.removeChild(panel);
+      this.removeContainerStyles();
+      this.putCoffees(this.coffeeList);
+    });
+
+    panel.appendChild(returnBtn);
+    panel.appendChild(h3);
+    panel.appendChild(ingr);
+    panel.appendChild(img);
+    panel.appendChild(desc);
+
+    container.appendChild(panel);
+  }
+
+  removeContainerStyles = ()=> {
+    const container = document.querySelector('.container');
+    container.style = null;
+  }
 }
