@@ -53,6 +53,18 @@ footer {
   color: white;
 }
 
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20vw;
+  height: 30vh;
+}
+
+.cardImg {
+  height: 60%;
+}
+
 
 /* estilos do botão do menu para dispositivos móveis */
 @media (max-width: 768px) {

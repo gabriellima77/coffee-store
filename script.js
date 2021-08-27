@@ -27,10 +27,10 @@ window.onload = ()=> {
   }
 
   const start = async()=> {
-    const main = document.querySelector('main');
+    const container = document.querySelector('.container');
     const coffeeList = await getData(URL.hot);
     const cards = getCards(coffeeList);
-    console.log(coffeeList);
+    cards.forEach((card)=> container.appendChild(card)); // adiciona as cartas a main
   }
 
   start();
