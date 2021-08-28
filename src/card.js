@@ -5,7 +5,7 @@ export default class Card {
     this._description = description;
     this._ingredients = ingredients;
     this._id = id;
-    this.imgSrc = '../assets/coffee-cup.png';
+    this.imgSrc = './assets/coffee-cup.png';
   }
 
   // Retorna a carta com todo o conteúdo da api
