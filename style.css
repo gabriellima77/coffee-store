@@ -16,7 +16,6 @@ body {
   display: grid;
   place-items: center;
   grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(3, 1fr);
   gap: 0;
   align-items: center;
   height: 100px;
@@ -60,6 +59,35 @@ footer {
   margin: 5% auto;
   width: 90%;
   display: grid;
+  place-items: center;
   grid-template-columns: repeat(4, 1fr);
   row-gap: 20px;
+}
+
+@media (max-width: 850px) {
+  .tags {
+    grid-template-columns: repeat(5, 1fr);
+    font-size: 14px;
+    height: 160px;
+  }
+
+  .tag {
+    width: 70%;
+  }
+
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 425px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
 }

@@ -39,3 +39,15 @@
   margin-top: auto;
   margin-bottom: 10px;
 }
+
+@media (max-width: 670px) {
+  .panel {
+    width: 60vw;
+  }
+}
+
+@media (max-width: 425px) {
+  .panel {
+    width: 80vw;
+  }
+}
