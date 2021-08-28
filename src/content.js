@@ -59,6 +59,8 @@ export default class Content {
   putCoffeesByType = async(type) => {
     if(type !== 'hot' && type !== 'iced') return -1;
     const panel = document.querySelector('.panel');
+    const search = document.querySelector('.search');
+    search.value = '';
     if(panel){
       panel.parentElement.removeChild(panel);
       this.removeContainerStyles();
@@ -92,8 +94,12 @@ export default class Content {
       panel.parentElement.removeChild(panel);
       this.removeContainerStyles();
     }
+
     let filteredList;
     if(type === 'tag') {
+      const search = document.querySelector('.search');
+      search.value = '';
+
       filteredList = this.coffeeList.filter(coffee=> (coffee.ingredients)
         ?coffee.ingredients.includes(text): null
       );
@@ -110,7 +116,10 @@ export default class Content {
     this.removeCoffees();
     this.putCoffees(filteredList);
   }
-
+  /*
+    Cria todos os elementos do painel, adiciona o evento
+    de retornar e coloca tudo no container
+  */
   showDetails = ({title, description, ingredients})=> {
     const container = document.querySelector('.container');
     this.removeCoffees();
@@ -138,7 +147,11 @@ export default class Content {
     img.src = '../assets/coffee-cup.png';
 
     returnBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+    // remove o painel do container remove os estilos do container
+    // coloca a lista de cafés e limpa o conteúdo da barra de busca
     returnBtn.addEventListener('click', ()=>{
+      const search = document.querySelector('.search');
+      search.value = '';
       panel.parentElement.removeChild(panel);
       this.removeContainerStyles();
       this.putCoffees(this.coffeeList);

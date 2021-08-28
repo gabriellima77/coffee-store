@@ -42,7 +42,12 @@
 
 @media (max-width: 670px) {
   .panel {
-    width: 60vw;
+    width: 65vw;
+    height: 70vh;
+  }
+
+  .panel .ingredients {
+    width: 80%;
   }
 }
 
