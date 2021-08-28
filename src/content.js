@@ -144,7 +144,7 @@ export default class Content {
     const startText = (ingredients.length > 1)?'The ingredients are ': 'The ingredient is ';
     ingr.textContent =  startText + ingredients.join(', ') + '.';
     
-    img.src = './assets/coffee-cup.png';
+    img.src = '../assets/coffee-cup.png';
 
     returnBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
     // remove o painel do container remove os estilos do container
