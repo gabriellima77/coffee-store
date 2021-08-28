@@ -8,7 +8,7 @@ export default class Card {
     this.imgSrc = '../assets/coffee-cup.png';
   }
 
-  // Retorna a carta com todo o conteudo da api
+  // Retorna a carta com todo o conteúdo da api
   get getCard() {
     const card = document.createElement('div');
     const title = document.createElement('h3');
