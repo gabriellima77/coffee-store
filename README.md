@@ -11,8 +11,8 @@ Para ver o como essa página está basta clicar no link abaixo: </br>
 
 Para executar essa pagina localmente ou fazer qualquer mudança, siga os passos abaixo: </br>
 ```
-git clone git@github.com:gabriellima77/gifo.git
-cd gifo
+git clone git@github.com:gabriellima77/coffee-store.git
+cd coffee-store
 ```
 E começar a mudar o código ou executar abrindo o arquivo index.html.
 
