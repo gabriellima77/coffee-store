@@ -14,7 +14,7 @@ Para executar essa pagina localmente ou fazer qualquer mudança, siga os passos 
 git clone git@github.com:gabriellima77/gifo.git
 cd gifo
 ```
-E começar a mudar o código ou executar abrindo o arquivo inde.html.
+E começar a mudar o código ou executar abrindo o arquivo index.html.
 
 ## Built with
 - **JS**
